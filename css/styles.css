@@ -1,0 +1,435 @@
+* {
+    margin: 0; 
+    padding: 0; /*reset inicial*/
+} /*ta meio desorganizado prof, só comentei o que eu achei necessário*/
+
+body {
+    background-color: #23232e ;
+}
+p {
+    color: whitesmoke;
+}
+
+h2 {
+    color: whitesmoke;
+    text-align: center;
+}
+
+a {
+    color: rgb(249, 250, 250); /*define cor*/
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover{
+    opacity: 0.7; /*ao passar o mouse, deixa transparente*/
+}
+
+.logo{
+    font-size: 24px; /*aumenta a fonte*/
+    text-transform: uppercase; /*maiusculo*/
+    letter-spacing: 4px; /*espaçamento de letra*/
+}
+
+nav{
+    display: flex; /*cria navbar como um flex container*/
+    justify-content: space-around; 
+    align-items: center; /*centraliza*/
+    font-family: 'Times New Roman', Times, serif; /*fonte*/
+    background: #23232e; /*cor de fundo*/
+    height: 8vh; /*altura*/
+}
+
+main {
+    background: url(/imagens/Nirvana_album_cover.svg.png) no-repeat 
+    center center; /*fundo com a imagem*/
+    background-size:cover;
+    height: 90vh;
+    display: flex;               /* ativa o flexbox */
+    align-items: flex-end;       /* alinha o conteúdo na parte inferior */
+    justify-content: center;     /* centraliza horizontalmente */
+    padding-bottom: 50px;        /* espaço da base */
+    color: rgba(212, 232, 242, 0.932);           
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7); /* sombra para destaque na imagem */
+    font-family: 'Cambria', serif; 
+}
+
+.nav-list{
+    list-style: none; /*Remove os marcadores da lista e exibe os itens lado a lado com flexbox*/
+    display: flex;    
+}
+.nav-list li{
+    letter-spacing: 3px; /*espaçamento entre as letras e margem*/
+    margin-left: 32px;
+}
+
+nav a:hover {
+    opacity: 0.7;
+    color: aqua;
+}
+
+.mobile-menu{
+    cursor: pointer; /*Esconde o menu hambúrguer em telas grandes*/
+    display: none;
+}
+.mobile-menu div{
+    width: 32px; /*Estiliza as três linhas do menu hambúrguer*/
+    height: 2px;
+    background: #fff;
+    margin: 8px;
+    transition: 0.3s;
+}
+@media (max-width:999px) { /*regras que só se aplicam em telas menores que 999px*/
+    body {
+        overflow-x: hidden;
+    }
+    .nav-list { /*vira uma coluna ocupando a tela inteira*/
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        width: 50vw;
+        height: 92vh;
+        background: #23232e;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transform: translateX(100%); /*O menu fica fixo na direita e fora da tela por padrão*/
+        transition: transform 0.3s ease-in;
+    }
+    .nav-list li {
+        margin-left: 0;
+        opacity: 0;
+    }
+    .mobile-menu{
+        display: block;
+
+    }
+    .nav-list.active {
+        transform: translateX(0); /*Quando ativo, desliza para dentro*/
+    }
+
+    @keyframes navLinkFade { /*Cria uma animação de opacidade e movimento para os links do menu ao abrirem*/
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+    }
+}
+
+.mobile-menu.active .line1 {
+    transform: rotate(-45deg) translate(-8px, 8px);
+}
+
+.mobile-menu.active .line2 {
+    opacity: 0;
+}
+
+.mobile-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -7px);
+} /*animação das linhas do menu hamburguer*/
+
+#historia h2 {
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; /*fonte*/
+}
+#historia p {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: whitesmoke;
+    width: 80%;
+    margin: 0 auto;
+    text-align: justify;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+}
+form label{
+    text-align: left; 
+    margin-top: 10px;
+    font-weight: bold;
+}
+form input, form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+form button {
+    background: rgb(26, 22, 75);
+    color: aliceblue;
+    padding: 10px;
+    cursor: pointer;
+}
+form button:hover {
+    background: rgb(12, 12, 97);
+}
+footer{
+    background: #181721;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+footer p{
+    font-family: 'Times New Roman', Times, serif;
+    padding: 5px;
+}
+footer ul{   
+    list-style: none;
+     display: flex;
+     justify-content: center; 
+}
+footer ul li{
+    margin: 10px;
+}                                                                                                             
+footer ul li a{
+    text-decoration: none;
+    color: rgb(65, 114, 212);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+footer ul li a:hover{
+    color: aqua;
+}
+
+.pics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.pics section { 
+     background-color: #2c2f38;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 280px;
+    height: 700px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    text-align: center;
+    margin: 25px; 
+}
+
+.pics img {
+    width: 100%;
+    max-width: 250px; /* imagem ocupa a largura do container*/
+    height: 350px;                   
+    border-radius: 5px; /* arrendonda os cantos */
+    margin-bottom: 10px;
+}
+
+.pics section:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+video {
+    height: 320px; /*centraliza o tamanho*/
+    width: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+#discografia td {
+    color: whitesmoke;
+}
+
+#discografia th {
+    color: whitesmoke;
+}
+
+section {
+  background-color: #2c2f38;
+  color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+section h2 {
+  text-align: center;
+  font-family: 'Cambria', serif;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+ol {
+  list-style: decimal inside;
+  font-family: 'Times New Roman', serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+ol li {
+  margin: 10px 0;
+}
+
+ol li strong {
+  color: #1e90ff;
+}
+
+#contato h2 {
+  text-align: center;
+  font-family: 'Cambria', serif;
+  color: whitesmoke;
+  margin-bottom: 20px;
+}
+
+.form-container input,
+.form-container textarea {
+  width: 100%; /* ocupa todo o container */
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #555;
+  border-radius: 6px;
+  background-color: #1e1f29;  /* contraste com fundo */
+  color: whitesmoke;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-container input:focus, /*foco nos campos*/
+.form-container textarea:focus {
+  border-color: #1e90ff;
+  box-shadow: 0 0 5px #1e90ff;
+  outline: none;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e90ff;
+  color: whitesmoke;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-container button:hover {
+  background-color: #0f6cd1;
+  transform: scale(1.03);
+}
+
+.form-container label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  color: whitesmoke;
+}
+
+.form-container fieldset {
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 15px;
+  margin-top: 15px;
+  background-color: #1e1f29;
+  color: whitesmoke;
+}
+
+.form-container legend {
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+.checkbox-group label { /*labels internos do checkbox*/
+  display: inline-block;
+  margin-right: 20px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.checkbox-options {
+  display: flex;
+  flex-direction: row;   /* deixa as opções uma do lado da outra */
+  align-items: flex-start;  /* alinhamento à esquerda dentro do fieldset */
+  gap: 20px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+/* Labels internos */
+.checkbox-options label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: normal;
+  cursor: pointer; /*muda o cursor*/
+  font-size: 16px;
+}
+
+.checkbox-options input[type="radio"],
+.checkbox-options input[type="checkbox"] {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.genre-container {
+  display: flex;
+  align-items: center; /* alinha verticalmente */
+  margin-top: 15px;
+  max-width: 100%;
+}
+
+.genre-container label {
+  color: whitesmoke;
+  font-size: 16px;
+  flex: 0 0 40%;
+  text-align: left;
+}
+
+.genre-container select {
+  flex: 0 0 60%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #1e1f29;
+  color: whitesmoke;
+  font-size: 16px;
+  cursor: pointer;
+}
