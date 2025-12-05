@@ -144,9 +144,9 @@ nav{
 }
 
 main {
-    background: url(./imagens/Nirvana_album_cover.svg.png) no-repeat 
-    center center; /*fundo com a imagem*/
+    background: url(./imagens/Nirvana_album_cover.svg.png) no-repeat center center fixed;
     background-size:cover;
+    background-attachment: fixed;
     height: 90vh;
     display: flex;               /* ativa o flexbox */
     align-items: flex-end;       /* alinha o conteúdo na parte inferior */
@@ -155,6 +155,7 @@ main {
     color: rgba(212, 232, 242, 0.932);           
     text-shadow: 2px 2px 6px rgba(0,0,0,0.7); /* sombra para destaque na imagem */
     font-family: 'Cambria', serif; 
+    will-change: background-image;
 }
 
 .nav-list{
