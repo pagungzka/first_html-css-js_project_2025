@@ -144,16 +144,14 @@ nav{
 }
 
 main {
-    background-image: url(./imagens/Nirvana_album_cover.svg.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: scroll;
-    height: 90vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(./imagens/Nirvana_album_cover.svg.png) no-repeat center center / cover fixed;
+    min-height: 100vh;
+    height: auto;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 50px;
+    padding-top: 50px;
     color: rgba(212, 232, 242, 0.932);
     text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
     font-family: 'Cambria', serif;
