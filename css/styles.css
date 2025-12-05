@@ -1,17 +1,52 @@
+:root {
+  /* Tema escuro (padrão) */
+  --bg-primary: #23232e;
+  --bg-secondary: #2c2f38;
+  --bg-tertiary: #1e1f29;
+  --text-primary: whitesmoke;
+  --text-secondary: rgba(255,255,255,0.85);
+  --text-tertiary: rgba(255,255,255,0.7);
+  --border-color: #ddd;
+  --border-light: rgba(255,255,255,0.04);
+  --border-muted: rgba(255,255,255,0.12);
+  --accent-primary: #1e90ff;
+  --accent-secondary: #0f6cd1;
+  --card-shadow: 0 0 10px rgba(0,0,0,0.1);
+  --overlay-bg: rgba(0,0,0,0.5);
+}
+
+/* Tema claro (quando ativado) */
+body.light-mode {
+  --bg-primary: #d4c4b0;
+  --bg-secondary: #e5dfd8;
+  --bg-tertiary: #ede9e4;
+  --text-primary: #2a2a2a;
+  --text-secondary: #4a4a4a;
+  --text-tertiary: #6a6a6a;
+  --border-color: #333;
+  --border-light: rgba(0,0,0,0.06);
+  --border-muted: rgba(0,0,0,0.12);
+  --accent-primary: #1e90ff;
+  --accent-secondary: #0f6cd1;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --overlay-bg: rgba(0,0,0,0.35);
+}
+
 * {
     margin: 0; 
     padding: 0; /*reset inicial*/
 } /*ta meio desorganizado prof, só comentei o que eu achei necessário*/
 
 body {
-    background-color: #23232e ;
+    background-color: var(--bg-primary);
+    transition: background-color 300ms ease, color 300ms ease;
 }
 p {
-    color: whitesmoke;
+    color: var(--text-primary);
 }
 
 h2 {
-    color: whitesmoke;
+    color: var(--text-primary);
     text-align: center;
 }
 
@@ -19,6 +54,72 @@ a {
     color: rgb(249, 250, 250); /*define cor*/
     text-decoration: none;
     transition: 0.3s;
+}
+
+body.light-mode a {
+  color: #2a2a2a;
+}
+
+/* Theme toggle switch */
+.theme-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.theme-checkbox {
+  display: none;
+}
+
+.theme-label {
+  width: 48px;
+  height: 32px;
+  background: var(--text-tertiary);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2px 4px;
+  cursor: pointer;
+  transition: background 300ms ease;
+  position: relative;
+}
+
+.theme-icon {
+  width: 26px;
+  height: 26px;
+  background: var(--text-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: transform 300ms ease;
+}
+
+.theme-checkbox:checked + .theme-label {
+  background: #c4a572;
+  justify-content: flex-end;
+}
+
+.theme-checkbox:checked + .theme-label .theme-icon {
+  transform: rotateY(180deg);
+}
+
+/* Converter whitesmoke para preto no modo claro */
+body.light-mode,
+body.light-mode * {
+  color: inherit;
+}
+
+body.light-mode h3 {
+  color: #2a2a2a;
+}
+
+body.light-mode .popup-sub {
+  color: #4a4a4a;
 }
 
 a:hover{
@@ -33,11 +134,13 @@ a:hover{
 
 nav{
     display: flex; /*cria navbar como um flex container*/
-    justify-content: space-around; 
+    justify-content: space-between;
     align-items: center; /*centraliza*/
     font-family: 'Times New Roman', Times, serif; /*fonte*/
-    background: #23232e; /*cor de fundo*/
+    background: var(--bg-primary);
     height: 8vh; /*altura*/
+    padding: 0 20px;
+    transition: background-color 300ms ease;
 }
 
 main {
@@ -68,6 +171,14 @@ nav a:hover {
     color: aqua;
 }
 
+body.light-mode nav a {
+  color: #2a2a2a;
+}
+
+body.light-mode nav a:hover {
+  color: #0f6cd1;
+}
+
 .mobile-menu{
     cursor: pointer; /*Esconde o menu hambúrguer em telas grandes*/
     display: none;
@@ -78,6 +189,10 @@ nav a:hover {
     background: #fff;
     margin: 8px;
     transition: 0.3s;
+}
+
+body.light-mode .mobile-menu div {
+  background: #2a2a2a;
 }
 @media (max-width:999px) { /*regras que só se aplicam em telas menores que 999px*/
     body {
@@ -95,6 +210,10 @@ nav a:hover {
         justify-content: space-around;
         transform: translateX(100%); /*O menu fica fixo na direita e fora da tela por padrão*/
         transition: transform 0.3s ease-in;
+    }
+
+    body.light-mode .nav-list {
+      background: var(--bg-primary);
     }
     .nav-list li {
         margin-left: 0;
@@ -140,11 +259,15 @@ nav a:hover {
 #historia p {
     font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
-    color: whitesmoke;
+    color: var(--text-primary);
     width: 80%;
     margin: 0 auto;
     text-align: justify;
 }
+table, th, td {
+    border: 1px solid var(--border-color);
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -153,13 +276,10 @@ table {
     margin: 0 auto;
 }
 
-table, th, td {
-    border: 1px solid #ccc;
-}
-
 th, td {
     padding: 10px;
     text-align: left;
+    color: var(--text-primary);
 }
 
 section {
@@ -176,6 +296,7 @@ form label{
     text-align: left; 
     margin-top: 10px;
     font-weight: bold;
+    color: var(--text-primary);
 }
 form input, form textarea {
     padding: 10px;
@@ -192,14 +313,16 @@ form button:hover {
     background: rgb(12, 12, 97);
 }
 footer{
-    background: #181721;
-    color: white;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     text-align: center;
     padding: 20px;
+    transition: background-color 300ms ease, color 300ms ease;
 }
 footer p{
     font-family: 'Times New Roman', Times, serif;
     padding: 5px;
+    color: var(--text-primary);
 }
 footer ul{   
     list-style: none;
@@ -211,9 +334,10 @@ footer ul li{
 }                                                                                                             
 footer ul li a{
     text-decoration: none;
-    color: rgb(65, 114, 212);
+    color: var(--accent-primary);
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
+    transition: color 300ms ease;
 }
 
 footer ul li a:hover{
@@ -228,24 +352,31 @@ footer ul li a:hover{
 }
 
 .pics section { 
-     background-color: #2c2f38;
+     background-color: var(--bg-secondary);
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     width: 100%;
     max-width: 280px;
     height: 700px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    position: relative;
+    box-shadow: var(--card-shadow);
     text-align: center;
-    margin: 25px; 
+    margin: 25px;
+    transition: background-color 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+}
+
+body.light-mode .pics section {
+  border: 2px solid #333;
 }
 
 .pics img {
     width: 100%;
-    max-width: 250px; /* imagem ocupa a largura do container*/
+    max-width: 250px;
     height: 350px;                   
-    border-radius: 5px; /* arrendonda os cantos */
+    border-radius: 5px;
     margin-bottom: 10px;
+    border: 1px solid var(--border-muted);
 }
 
 .pics section:hover {
@@ -253,7 +384,214 @@ footer ul li a:hover{
     transition: transform 0.3s ease;
 }
 
-video {
+/* Like button styles for cards */
+
+/* Posiciona o contador no canto superior direito do card */
+.like-container {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.18);
+    padding: 6px 8px;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+.like-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #ff6b81;
+    font-size: 18px;
+    line-height: 1;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+}
+
+.like-btn:hover {
+    transform: scale(1.06);
+}
+
+.like-btn.liked {
+    background: rgba(255,107,129,0.14);
+    box-shadow: 0 4px 10px rgba(255,107,129,0.12);
+    border-color: rgba(255,107,129,0.35);
+    color: #ff4b6e;
+}
+
+.like-count {
+    color: whitesmoke;
+    font-weight: 700;
+    min-width: 28px;
+    text-align: left;
+    font-size: 14px;
+}
+
+body.light-mode .like-count {
+  color: #2a2a2a;
+}
+
+/* Flying heart animation (coração caindo) */
+.flying-heart {
+    position: absolute;
+    pointer-events: none;
+    font-size: 20px;
+    color: #ff4b6e;
+    left: 0;
+    top: 0;
+    transform: translateX(var(--dx, 0)) translateY(0) scale(1);
+    animation-name: fall-heart;
+    animation-duration: var(--duration, 900ms);
+    animation-timing-function: cubic-bezier(.22,.9,.32,1);
+    animation-fill-mode: forwards;
+    z-index: 9999;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+@keyframes fall-heart {
+    0% {
+        transform: translateX(var(--dx, 0)) translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(calc(var(--dx, 0) + 12px)) translateY(120px) scale(0.6) rotate(18deg);
+        opacity: 0;
+    }
+}
+
+/* Popup de confirmação (formulário) */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--overlay-bg);
+  z-index: 2000;
+}
+
+.popup-overlay.hidden {
+  display: none;
+}
+
+/* animação de entrada do card */
+@keyframes popup-in {
+  from { opacity: 0; transform: translateY(10px) scale(.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* quando a overlay tiver a classe show, anima o card */
+.popup-overlay.show .popup-card {
+  animation: popup-in 360ms cubic-bezier(.22,.9,.32,1);
+}
+
+.popup-card {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 36px 28px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  text-align: center;
+  max-width: 520px;
+  width: calc(100% - 48px);
+  border: 1px solid var(--border-light);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+.popup-check {
+  width: 86px;
+  height: 86px;
+  line-height: 86px;
+  border-radius: 50%;
+  background: linear-gradient(180deg,#55d187,#2fb26a);
+  color: white;
+  font-size: 44px;
+  margin: 0 auto 18px auto;
+  display: inline-block;
+  box-shadow: 0 6px 18px rgba(47,178,106,0.25);
+}
+
+.popup-card h2 {
+  margin: 6px 0 8px 0;
+  font-size: 26px;
+  color: whitesmoke;
+}
+
+body.light-mode .popup-card h2 {
+  color: #2a2a2a;
+}
+
+.popup-sub {
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 18px;
+}
+
+body.light-mode .popup-sub {
+  color: #4a4a4a;
+}
+
+.popup-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botão principal (Fechar) */
+.popup-actions .popup-close {
+  background: #1e90ff;
+  color: whitesmoke;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 160ms ease;
+}
+
+body.light-mode .popup-actions .popup-close {
+  color: #2a2a2a;
+  background: #0f6cd1;
+}
+
+.popup-actions .popup-close:hover {
+  background: #0f6cd1;
+}
+
+/* Botão 'Voltar' com hover visual */
+.popup-actions .popup-back {
+  background: transparent;
+  color: whitesmoke;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 160ms ease, color 160ms ease, transform 120ms ease;
+}
+
+body.light-mode .popup-actions .popup-back {
+  color: #2a2a2a;
+  border: 1px solid rgba(0,0,0,0.12);
+}
+
+.popup-actions .popup-back:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}video {
     height: 320px; /*centraliza o tamanho*/
     width: auto;
     display: block;
@@ -262,21 +600,22 @@ video {
 }
 
 #discografia td {
-    color: whitesmoke;
+    color: var(--text-primary);
 }
 
 #discografia th {
-    color: whitesmoke;
+    color: var(--text-primary);
 }
 
 section {
-  background-color: #2c2f38;
-  color: #fff;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
   padding: 30px;
   border-radius: 8px;
   max-width: 600px;
   margin: 20px auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--card-shadow);
+  transition: background-color 300ms ease, color 300ms ease, box-shadow 300ms ease;
 }
 
 section h2 {
@@ -291,6 +630,7 @@ ol {
   font-family: 'Times New Roman', serif;
   font-size: 18px;
   line-height: 1.6;
+  color: var(--text-primary);
 }
 
 ol li {
@@ -298,7 +638,7 @@ ol li {
 }
 
 ol li strong {
-  color: #1e90ff;
+  color: var(--accent-primary);
 }
 
 #contato h2 {
@@ -310,16 +650,16 @@ ol li strong {
 
 .form-container input,
 .form-container textarea {
-  width: 100%; /* ocupa todo o container */
+  width: 100%;
   padding: 12px;
   margin: 10px 0;
-  border: 1px solid #555;
+  border: 1px solid var(--border-muted);
   border-radius: 6px;
-  background-color: #1e1f29;  /* contraste com fundo */
-  color: whitesmoke;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
   font-size: 16px;
   box-sizing: border-box;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s, background-color 300ms ease, color 300ms ease;
 }
 
 .form-container input:focus, /*foco nos campos*/
@@ -342,6 +682,10 @@ ol li strong {
   transition: background-color 0.3s, transform 0.2s;
 }
 
+body.light-mode .form-container button {
+  color: #2a2a2a;
+}
+
 .form-container button:hover {
   background-color: #0f6cd1;
   transform: scale(1.03);
@@ -351,16 +695,17 @@ ol li strong {
   display: block;
   font-weight: bold;
   margin-top: 15px;
-  color: whitesmoke;
+  color: var(--text-primary);
 }
 
 .form-container fieldset {
-  border: 1px solid #555;
+  border: 1px solid var(--border-muted);
   border-radius: 6px;
   padding: 15px;
   margin-top: 15px;
-  background-color: #1e1f29;
-  color: whitesmoke;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
 }
 
 .form-container legend {
@@ -368,11 +713,19 @@ ol li strong {
   padding: 0 5px;
 }
 
+body.light-mode .form-container legend {
+  color: #2a2a2a;
+}
+
 .checkbox-group label { /*labels internos do checkbox*/
   display: inline-block;
   margin-right: 20px;
   font-weight: normal;
   cursor: pointer;
+}
+
+body.light-mode .checkbox-group label {
+  color: #2a2a2a;
 }
 
 .checkbox-group input[type="checkbox"] {
@@ -397,8 +750,12 @@ ol li strong {
   align-items: center;
   margin-bottom: 10px;
   font-weight: normal;
-  cursor: pointer; /*muda o cursor*/
+  cursor: pointer;
   font-size: 16px;
+}
+
+body.light-mode .checkbox-options label {
+  color: #2a2a2a;
 }
 
 .checkbox-options input[type="radio"],
@@ -417,7 +774,7 @@ ol li strong {
 }
 
 .genre-container label {
-  color: whitesmoke;
+  color: var(--text-primary);
   font-size: 16px;
   flex: 0 0 40%;
   text-align: left;
@@ -427,9 +784,10 @@ ol li strong {
   flex: 0 0 60%;
   padding: 8px 12px;
   border-radius: 6px;
-  border: 1px solid #555;
-  background-color: #1e1f29;
-  color: whitesmoke;
+  border: 1px solid var(--border-muted);
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 300ms ease, color 300ms ease, border-color 300ms ease;
 }

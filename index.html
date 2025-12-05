@@ -10,6 +10,12 @@
     <header>
       <nav>
         <a class="logo">Nirvana</a>  <!--menu hamburguer-->
+        <div class="theme-toggle" title="Alternar modo claro/escuro">
+          <input type="checkbox" id="theme-switch" class="theme-checkbox" aria-label="Modo claro">
+          <label for="theme-switch" class="theme-label">
+            <span class="theme-icon">☀️</span>
+          </label>
+        </div>
         <div class="mobile-menu">
         <div class="line1"></div> <!--as 3 linhas que se transformam em X-->
         <div class="line2"></div>
@@ -64,6 +70,10 @@
              dores crônicas e dependência química, além da pressão intensa da indústria musical.
              Casado com a também cantora Courtney Love e pai de Frances Bean, Cobain morreu aos 27 anos em 1994,
              deixando um legado que transformou o rock e o consagrou como um símbolo de sua geração.</p>
+        <div class="like-container">
+            <button class="like-btn" aria-pressed="false" title="Curtir">❤</button>
+            <span class="like-count">0</span>
+        </div>
     </section>
 
     <section>
@@ -76,6 +86,10 @@
             simplicidade e peso, sendo parte essencial do som grunge. Após o fim da banda em 1994, Novoselic
             participou de diversos projetos musicais, como Sweet 75
             e Giants in the Trees, além de colaborar com outros artistas.</p>
+        <div class="like-container">
+            <button class="like-btn" aria-pressed="false" title="Curtir">❤</button>
+            <span class="like-count">0</span>
+        </div>
     </section>
 
     <section>
@@ -88,6 +102,10 @@
             e o fim do Nirvana em 1994, Grohl criou o Foo Fighters,transformando o projeto solo em uma das maiores bandas de
             rock do mundo. Reconhecido por sua versatilidade e carisma,
             é hoje considerado uma das figuras mais influentes do rock contemporâneo.</p>
+        <div class="like-container">
+            <button class="like-btn" aria-pressed="false" title="Curtir">❤</button>
+            <span class="like-count">0</span>
+        </div>
     </section>
     </div>
 
@@ -231,3 +249,16 @@
   <script src="/javascript/script.js"></script>
 </body>
 </html> 
+
+<!-- Popup de confirmação de envio de formulário -->
+<div id="submit-popup" class="popup-overlay hidden" aria-hidden="true">
+    <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+        <div class="popup-check" aria-hidden="true">✔</div>
+        <h2 id="popup-title">Obrigado pela resposta</h2>
+        <p class="popup-sub">Recebemos sua mensagem com sucesso.</p>
+        <div class="popup-actions">
+            <button class="popup-back" aria-label="Voltar">Voltar</button>
+            <button class="popup-close" aria-label="Fechar">Fechar</button>
+        </div>
+    </div>
+</div>
