@@ -144,7 +144,7 @@ nav{
 }
 
 main {
-    background: url(/imagens/Nirvana_album_cover.svg.png) no-repeat 
+    background: url(imagens/Nirvana_album_cover.svg.png) no-repeat 
     center center; /*fundo com a imagem*/
     background-size:cover;
     height: 90vh;
