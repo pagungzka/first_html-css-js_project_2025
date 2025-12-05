@@ -144,18 +144,36 @@ nav{
 }
 
 main {
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(./imagens/nirvana_bg.svg) no-repeat center center / cover fixed;
-    background-color: #1a1a1a;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
     min-height: 100vh;
     height: auto;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     padding-bottom: 50px;
     padding-top: 50px;
     color: rgba(212, 232, 242, 0.932);
     text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
     font-family: 'Cambria', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+main::before {
+    content: "NIRVANA";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18vw;
+    font-weight: 900;
+    font-family: Arial Black, sans-serif;
+    color: rgba(255, 255, 255, 0.08);
+    white-space: nowrap;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+    z-index: 1;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
 }
 
 .nav-list{
