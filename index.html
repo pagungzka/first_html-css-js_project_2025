@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>website</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
       <nav>
         <a class="logo">Nirvana</a>  <!--menu hamburguer-->
+        <div class="theme-toggle" title="Alternar modo claro/escuro">
+          <input type="checkbox" id="theme-switch" class="theme-checkbox" aria-label="Modo claro">
+          <label for="theme-switch" class="theme-label">
+            <span class="theme-icon">☀️</span>
+          </label>
+        </div>
         <div class="mobile-menu">
         <div class="line1"></div> <!--as 3 linhas que se transformam em X-->
         <div class="line2"></div>
@@ -56,7 +62,7 @@
     <div class="pics"> <!--container flexível para mostrar os integrantes em cards, com imagem + descrição-->
     <section id="integrantes">
         <h3>Kurt Cobain</h3>
-        <img src="/imagens/kurt_cobain.jpg" alt="Kurt Cobain">
+        <img src="imagens/kurt_cobain.jpg" alt="Kurt Cobain">
         <p>Kurt Cobain (1967-1994) foi cantor, guitarrista e compositor norte-americano,
              fundador da banda Nirvana e um dos maiores ícones do movimento grunge. Nascido em Aberdeen,
              Washington, mostrou interesse pela música desde cedo e, junto a Krist Novoselic e depois Dave Grohl,
@@ -64,11 +70,15 @@
              dores crônicas e dependência química, além da pressão intensa da indústria musical.
              Casado com a também cantora Courtney Love e pai de Frances Bean, Cobain morreu aos 27 anos em 1994,
              deixando um legado que transformou o rock e o consagrou como um símbolo de sua geração.</p>
+        <div class="like-container">
+            <button class="like-btn" aria-pressed="false" title="Curtir">❤</button>
+            <span class="like-count">0</span>
+        </div>
     </section>
 
     <section>
         <h3>Krist Novoselic</h3>
-        <img src="/imagens/krist_novoselic.jpg" alt="Krist Novoselic"> 
+        <img src="imagens/krist_novoselic.jpg" alt="Krist Novoselic"> 
         <p>Krist Novoselic (1965-) é um baixista, compositor e ativista político norte-americano,
             conhecido principalmente como cofundador da banda ao lado de Kurt Cobain em 1987.
             Nascido em Compton, Califórnia, e filho de imigrantes croatas, mudou-se ainda jovem para Aberdeen,
@@ -76,11 +86,15 @@
             simplicidade e peso, sendo parte essencial do som grunge. Após o fim da banda em 1994, Novoselic
             participou de diversos projetos musicais, como Sweet 75
             e Giants in the Trees, além de colaborar com outros artistas.</p>
+        <div class="like-container">
+            <button class="like-btn" aria-pressed="false" title="Curtir">❤</button>
+            <span class="like-count">0</span>
+        </div>
     </section>
 
     <section>
         <h3>Dave Grohl</h3>
-        <img src="/imagens/dave_grohl.jpg" alt="Dave Grohl">
+        <img src="imagens/dave_grohl.jpg" alt="Dave Grohl">
         <p>Dave Grohl (1969-) é um músico, compositor e produtor norte-americano, conhecido por ter sido baterista do Nirvana e,
             posteriormente, fundador e vocalista da banda Foo Fighters. Nascido em Warren, Ohio,
             cresceu na Virgínia e começou a tocar bateria ainda adolescente, integrando a banda punk Scream antes de entrar
@@ -88,6 +102,10 @@
             e o fim do Nirvana em 1994, Grohl criou o Foo Fighters,transformando o projeto solo em uma das maiores bandas de
             rock do mundo. Reconhecido por sua versatilidade e carisma,
             é hoje considerado uma das figuras mais influentes do rock contemporâneo.</p>
+        <div class="like-container">
+            <button class="like-btn" aria-pressed="false" title="Curtir">❤</button>
+            <span class="like-count">0</span>
+        </div>
     </section>
     </div>
 
@@ -124,9 +142,9 @@
     <section id="multimidia">
         <h2>Come as you are - Nevermind (1991)</h2>
         <hr>
-        <video controls width="800" height="600" poster="/imagens/baby.jpeg">
-            <source src="/video/Nirvana - Come As You Are (Official Music Video).mp4" type="video/mp4">
-                 <track kind="subtitles" srclang="en-us" src="/video/Nirvana - Come As You Are.vtt"
+        <video controls width="800" height="600" poster="imagens/baby.jpeg">
+            <source src="video/Nirvana - Come As You Are (Official Music Video).mp4" type="video/mp4">
+                 <track kind="subtitles" srclang="en-us" src="video/Nirvana - Come As You Are.vtt"
                   label="captions en"> <!--music_captions (made by me)-->
         </video>
     </section>
@@ -228,6 +246,19 @@
         </ul>
         <p>&copy;2025 Nirvana - Todos os direitos reservados. </p>
     </footer>
-  <script src="/javascript/script.js"></script>
+    <script src="javascript/script.js"></script>
 </body>
 </html> 
+
+<!-- Popup de confirmação de envio de formulário -->
+<div id="submit-popup" class="popup-overlay hidden" aria-hidden="true">
+    <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+        <div class="popup-check" aria-hidden="true">✔</div>
+        <h2 id="popup-title">Obrigado pela resposta</h2>
+        <p class="popup-sub">Recebemos sua mensagem com sucesso.</p>
+        <div class="popup-actions">
+            <button class="popup-back" aria-label="Voltar">Voltar</button>
+            <button class="popup-close" aria-label="Fechar">Fechar</button>
+        </div>
+    </div>
+</div>
