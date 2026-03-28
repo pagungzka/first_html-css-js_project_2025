@@ -44,3 +44,12 @@ const mobileNavbar = new MobileNavbar(
 );
 
 mobileNavbar.init();
+
+document.querySelector("form").addEventListener("submit", function(e) {
+    let nome = document.getElementById("nome").value;
+
+    if (nome.length < 3) {
+        alert("Nome muito curto!");
+        e.preventDefault();
+    }
+});
