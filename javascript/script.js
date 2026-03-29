@@ -66,15 +66,6 @@ const mobileNavbar = new MobileNavbar(
 
 mobileNavbar.init();
 
-document.querySelector("form").addEventListener("submit", function(e) {
-    let nome = document.getElementById("nome").value;
-
-    if (nome.length < 3) {
-        alert("Nome muito curto!");
-        e.preventDefault();
-    }
-}
-
 // Like button functionality for cards inside .pics
 document.addEventListener('DOMContentLoaded', () => {
     const likeButtons = document.querySelectorAll('.like-btn');
@@ -153,8 +144,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         form.addEventListener('submit', (e) => {
-            e.preventDefault();
+            const nomeInput = document.getElementById('nome');
+            const nome = nomeInput ? nomeInput.value.trim() : '';
 
+            if (nome.length < 3) {
+                alert('Nome muito curto!');
+                if (nomeInput) nomeInput.focus();
+                e.preventDefault();
+                return;
+            }
+
+            e.preventDefault();
             showPopup();
 
             try { form.reset(); } catch (err) {}
@@ -202,7 +202,5 @@ document.addEventListener('DOMContentLoaded', () => {
                 hidePopup();
             }
         });
-    }
-});
     }
 });
