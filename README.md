@@ -1,4 +1,5 @@
 # 🎸 Nirvana Fan Website
+Demo: https://pagungzka.github.io/first_html-css-js_project_2025/
 
 This project is a website developed using HTML, CSS, and JavaScript, dedicated to the band Nirvana. The main goal was to practice web development concepts such as responsiveness, layout structuring, and user interaction.
 
